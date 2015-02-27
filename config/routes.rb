@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :patients
+
   resources :clinics
 
   root to: "static_pages#root"
