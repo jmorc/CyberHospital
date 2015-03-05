@@ -12,8 +12,8 @@
       <tr>
         <td><%= clinic.name %></td>
         <td><%= link_to 'Show Patients', clinic %></td>
-        <td><%= link_to 'Edit Clinic', edit_clinic_path(clinic) %></td>
-        <td><%= link_to 'Delete Clinic', clinic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Edit', edit_clinic_path(clinic) %></td>
+        <td><%= button_to 'Delete', clinic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -21,4 +21,4 @@
 
 <br>
 
-<%= link_to 'New Clinic', new_clinic_path %>
+<%= link_to 'Add a new clinic', new_clinic_path %>

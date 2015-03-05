@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-Show page for the <%= @clinic.name %> clinic
+<h1>Welcome to the <%= @clinic.name %> clinic</h1>
+<h2>Patients:</h2>
+<% @clinic.patients.each do |patient| %>
+  <li><%= patient.name %> <%= link_to 'View Chart', patient_path(patient.id) %>
+  </li>
+<% end %>
+
+<%= link_to 'Add Patients to this Clinic', new_patient_path %>
 <%= link_to 'Edit', edit_clinic_path(@clinic) %> |
 <%= link_to 'Back', clinics_path %>
