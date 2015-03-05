@@ -10,15 +10,5 @@
   <%= @patient.summary %>
 </p>
 
-<p>
-  <strong>Temperature:</strong>
-  <%= @patient.temperature %>
-</p>
-
-<p>
-  <strong>Heart rate:</strong>
-  <%= @patient.heart_rate %>
-</p>
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Edit', edit_clinic_patient_url(@patient.clinic, @patient) %> |
+<%= link_to 'Back', clinic_url(@patient.clinic) %>

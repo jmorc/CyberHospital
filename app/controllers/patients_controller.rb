@@ -14,6 +14,7 @@ class PatientsController < ApplicationController
   end
 
   def edit
+    @clinic = @patient.clinic
   end
 
   def create
