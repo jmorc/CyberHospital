@@ -4,27 +4,27 @@ class PatientsController < ApplicationController
 
   respond_to :html
 
-  def index
-    @patients = Patient.all
-    respond_with(@patients)
-  end
-
   def show
     respond_with(@patient)
   end
 
   def new
     @patient = Patient.new
-    respond_with(@patient)
+    @clinic = Clinic.find(params[:clinic_id])
   end
 
   def edit
   end
 
   def create
-    @patient = Patient.new(patient_params)
-    @patient.save
-    respond_with(@patient)
+    @clinic = Clinic.find(params[:clinic_id])
+    @patient = @clinic.patients.new(patient_params)
+    if @patient.save
+      redirect_to @clinic
+    else
+      flash[:notices] = @patient.errors.full_messages
+      render :new
+    end
   end
 
   def update

@@ -7,6 +7,6 @@
   </li>
 <% end %>
 
-<%= link_to 'Add Patients to this Clinic', new_patient_path %>
-<%= link_to 'Edit', edit_clinic_path(@clinic) %> |
-<%= link_to 'Back', clinics_path %>
+<%= link_to 'Add Patients to this Clinic', new_clinic_patient_url(@clinic) %>
+<%= link_to 'Edit', edit_clinic_url(@clinic) %> |
+<%= link_to 'Back', clinics_url %>

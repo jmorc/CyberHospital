@@ -1,37 +1,22 @@
-<%= form_for(@patient) do |f| %>
-  <% if @patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+<% form_method = @patient.persisted? ? "PATCH" : "POST" %>
+<% form_action = @patient.persisted? ? patient_url(@patient) : patients_url %>
 
-      <ul>
-      <% @patient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<form action="<%= form_action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  <input type="hidden" name="clinic_id" value="<%= @clinic.id %>">
+  
+  <input type="hidden" name="authenticity_token"
+         value="<%= form_authenticity_token %>">
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :temperature %><br>
-    <%= f.text_field :temperature %>
-  </div>
-  <div class="field">
-    <%= f.label :heart_rate %><br>
-    <%= f.number_field :heart_rate %>
-  </div>
-  <div class="field">
-    <%= f.label :clinic %><br>
-    <%= f.text_field :clinic %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <label>Patient name:
+    <input type="text" name="patient[name]" value="<%= @patient.name %>">
+  </label><br>
+
+  <label>Summary:
+    <textarea name="patient[summary]"><%= @patient.summary %></textarea>
+  </label><br>
+
+  <input type="submit">
+
+</form>
+
