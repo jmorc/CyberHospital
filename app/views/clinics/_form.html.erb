@@ -1,22 +1,16 @@
-<%= form_for(@clinic) do |f| %>
-  <% if @clinic.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@clinic.errors.count, "error") %> prohibited this clinic from being saved:</h2>
+<% form_method = @clinic.persisted? ? "PATCH" : "POST" %>
+<% form_action = @clinic.persisted? ? clinic_url(@clinic) : clinics_url %>
 
-      <ul>
-      <% @clinic.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<form action="<%= form_action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  
+  <input type="hidden" name="authenticity_token"
+         value="<%= form_authenticity_token %>">
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <label>Clinic name:
+    <input type="text" name="clinic[name]" value="<%= @clinic.name %>">
+  </label><br>
 
-   <div class="actions">
-    <%= f.submit "Create Clinic" %>
-  </div>
-<% end %>
+  <input type="submit">
+
+</form>

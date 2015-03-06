@@ -35,7 +35,7 @@ class PatientsController < ApplicationController
 
   def destroy
     @patient.destroy
-    respond_with(@patient)
+    redirect_to @patient.clinic
   end
 
   private
@@ -44,6 +44,6 @@ class PatientsController < ApplicationController
     end
 
     def patient_params
-      params.require(:patient).permit(:name, :summary, :temperature, :heart_rate)
+      params.require(:patient).permit(:name, :summary, :viewable_time)
     end
 end

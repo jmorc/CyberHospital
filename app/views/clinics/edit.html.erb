@@ -1,6 +1,6 @@
-<h1>Editing clinic</h1>
+<h3>Edit the <%= @clinic.name %> clinic</h3>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @clinic %> |
-<%= link_to 'Back', clinics_path %>
+<%= link_to 'Show this clinic', @clinic %> |
+<%= link_to 'Back to clinics list', clinics_url %>
