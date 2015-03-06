@@ -11,9 +11,17 @@
         <td><%= data_item.name %></td>
         <td><%= data_item.value %></td>
         <td><%= data_item.comment %></td>
-        <td><%= button_to "Edit"  %></td>
-        <td><%= button_to "Delete" %></td>
+        <td><%= button_to "Edit", 
+                edit_patient_patient_datum_url(@patient, data_item),
+                method: :get %></td>
+        <td><%= button_to "Delete", 
+                patient_datum_url, method: :delete %></td>
       </tr>  
     <% end %>
+    <tr>
+      <td><%= button_to "Add Data", 
+              new_patient_patient_datum_url(@patient),
+              method: :get %></td>
+    </tr>
   </table>
 <% end %>
