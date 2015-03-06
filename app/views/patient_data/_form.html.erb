@@ -1,0 +1,32 @@
+<% form_method = @patient_data.persisted? ? "PATCH" : "POST" %>
+
+<% if @patient_data.persisted? %> 
+  <% form_action = patient_datum_url(@patient_data) %>
+<% elsif %>
+  <% form_action = patient_data_url %>
+<% end %>
+
+<form action="<%= form_action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  
+  <input type="hidden" name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <label>Data item name:
+    <input type="text" name="patient_data[name]" 
+           value="<%= @patient_data.name %>">
+  </label><br>
+
+  <label>Value:
+    <input type="text" name="patient_data[value]" 
+           value="<%= @patient_data.value %>">
+  </label><br>
+
+  <label>Comment:
+    <input type="text" name="patient_data[comment]" 
+           value="<%= @patient_data.comment %>">
+  </label><br>
+
+  <input type="submit">
+
+</form>
