@@ -15,24 +15,8 @@
   <%= @patient.viewable_time %>
 </p>
 
-<% if !@patient.patient_datas.empty? %>
-  <p><strong>Patient Data:</strong></p>
-  <table>
-    <tr>
-      <th>Data Type</th>
-      <th>Value</th>
-      <th>Comment</th>
-    </tr>
-  
-    <% @patient.patient_datas.each do |data_item| %>
-      <tr>
-        <td><%= data_item.name %></td>
-        <td><%= data_item.value %></td>
-        <td><%= data_item.comment %></td>
-      </tr>  
-    <% end %>
-  </table>
-<% end %>
+<%= render "patient_data" %>
+
 <p>
 <%= link_to 'Edit', edit_clinic_patient_url(@patient.clinic, @patient) %> |
 <%= link_to 'Back', clinic_url(@patient.clinic) %>

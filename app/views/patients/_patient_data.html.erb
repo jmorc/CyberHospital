@@ -1,0 +1,19 @@
+<% if !@patient.patient_datas.empty? %>
+  <p><strong>Patient Data:</strong></p>
+  <table>
+    <tr>
+      <th>Data Type</th>
+      <th>Value</th>
+      <th>Comment</th>
+    </tr>
+    <% @patient.patient_datas.each do |data_item| %>
+      <tr>
+        <td><%= data_item.name %></td>
+        <td><%= data_item.value %></td>
+        <td><%= data_item.comment %></td>
+        <td><%= button_to "Edit"  %></td>
+        <td><%= button_to "Delete" %></td>
+      </tr>  
+    <% end %>
+  </table>
+<% end %>
