@@ -27,6 +27,9 @@
            value="<%= @patient_data.comment %>">
   </label><br>
 
+  <input type="hidden" name="patient_data[patient_id]" 
+           value="<%= @patient.id %>">
+
   <input type="submit">
 
 </form>
