@@ -15,13 +15,12 @@
                 edit_patient_patient_datum_url(@patient, data_item),
                 method: :get %></td>
         <td><%= button_to "Delete", 
-                patient_datum_url, method: :delete %></td>
+                patient_datum_url(data_item), method: :delete %></td>
       </tr>  
     <% end %>
-    <tr>
-      <td><%= button_to "Add Data", 
-              new_patient_patient_datum_url(@patient),
-              method: :get %></td>
-    </tr>
   </table>
 <% end %>
+
+<%= button_to "Add Data to this patient", 
+              new_patient_patient_datum_url(@patient),
+              method: :get %>
