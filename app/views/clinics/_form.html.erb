@@ -1,16 +1,18 @@
 <% form_method = @clinic.persisted? ? "PATCH" : "POST" %>
 <% form_action = @clinic.persisted? ? clinic_url(@clinic) : clinics_url %>
 
-<form action="<%= form_action %>" method="POST">
+<form class="form-group" action="<%= form_action %>" method="POST">
   <input type="hidden" name="_method" value="<%= form_method %>">
   
   <input type="hidden" name="authenticity_token"
-         value="<%= form_authenticity_token %>">
+         value="<%= form_authenticity_token %>"
+         class="form-control">
 
   <label>Clinic name:
-    <input type="text" name="clinic[name]" value="<%= @clinic.name %>">
+    <input type="text" name="clinic[name]" 
+           value="<%= @clinic.name %>" class="form-control">
   </label><br>
 
-  <input type="submit">
+  <input type="submit" class="btn btn-default">
 
 </form>

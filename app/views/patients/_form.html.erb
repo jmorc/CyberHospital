@@ -20,7 +20,9 @@
     <input type="date" name="patient[viewable_time]">
   </label><br>
 
-  <%= render "patient_data" %>
+  <% if @patient.persisted? %>
+    <%= render "patient_data" %>
+  <% end %>
 
   <input type="submit">
 
