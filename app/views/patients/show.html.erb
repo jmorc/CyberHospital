@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @patient.name %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @patient.summary %>
-</p>
-
-<p>
-  <strong>Patient data viewable after:</strong>
-  <%= @patient.viewable_time %>
-</p>
+<table class="table">
+<tr>
+  <th>Name</th>
+  <th>Summary</th>
+  <th>Patient data viewable on</th>
+</tr>
+<tr>
+  <td><%= @patient.name %></td>
+  <td><%= @patient.summary %></td>
+  <td><%= @patient.viewable_time %></td>
+</tr>
+</table>
 
 <%= render "patient_data" %>
 
