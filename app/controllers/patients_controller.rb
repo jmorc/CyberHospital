@@ -38,6 +38,7 @@ class PatientsController < ApplicationController
     redirect_to @patient.clinic
   end
 
+  
   private
     def set_patient
       @patient = Patient.find(params[:id])
@@ -46,4 +47,7 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:name, :summary, :viewable_time)
     end
+
+
+    
 end

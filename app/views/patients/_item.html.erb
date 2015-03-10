@@ -1,4 +1,4 @@
-<% if !@patient.patient_items.empty? %>
+<% if !@patient.items.empty? %>
   <p><strong>Patient Data:</strong></p>
   <table class="table">
     <tr>
@@ -6,17 +6,17 @@
       <th>Value</th>
       <th>Comment</th>
     </tr>
-    <% @patient.patient_items.each do |data_item| %>
+    <% @patient.items.each do |data_item| %>
       <tr>
         <td><%= data_item.name %></td>
         <td><%= data_item.value %></td>
         <td><%= data_item.comment %></td>
         <% if can? :update, @patient_item %>
           <td><%= button_to "Edit", 
-                  edit_patient_patient_datum_url(@patient, data_item),
+                  edit_patient_item_url(@patient, data_item),
                   method: :get, class: "btn btn-default" %></td>
           <td><%= button_to "Delete", 
-                patient_datum_url(data_item), method: :delete,
+                item_url(data_item), method: :delete,
                 class: "btn btn-default" %></td>
         <% end %>
       </tr>  
@@ -25,7 +25,7 @@
 <% end %>
 
 <% if can? :update, @patient %>
-  <%= button_to "Add Data to this patient", 
-              new_patient_patient_datum_url(@patient),
+  <%= button_to "Add a data item to this patient", 
+              new_patient_item_url(@patient),
               method: :get, class: "btn btn-default" %>
 <% end %>

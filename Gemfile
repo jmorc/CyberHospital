@@ -33,7 +33,7 @@ gem "twitter-bootstrap-rails"
 gem 'newrelic_rpm'
 
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 
 group :development do
   gem 'better_errors'

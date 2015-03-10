@@ -19,7 +19,7 @@
 </table>
 
 <% if (@patient.viewable? || can?(:update, @patient)) %>
-  <%= render "patient_data" %>
+  <%= render "item" %>
 <% end %>
 
 <p>

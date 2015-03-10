@@ -1,9 +1,9 @@
-class PatientItemsController < ApplicationController
+class ItemsController < ApplicationController
   load_and_authorize_resource
 
   def create
     @patient = Patient.find(params[:item][:patient_id])
-    @item = @patient.items.new(items_params)
+    @item = @patient.items.new(item_params)
 
     if @item.save!
       flash[:notice] = 'New Patient Data Saved'
@@ -16,7 +16,7 @@ class PatientItemsController < ApplicationController
   end
 
   def update
-    @item = PatientItem.find(params[:id])
+    @item = Item.find(params[:id])
     
     if @item.update(item_params)
       flash[:notice] = 'Patient Data updated'
@@ -29,7 +29,7 @@ class PatientItemsController < ApplicationController
   end
 
   def destroy
-    @item = PatientItem.find(params[:id])
+    @item = Item.find(params[:id])
     @item.destroy
     redirect_to @item.patient
   end
@@ -49,7 +49,7 @@ class PatientItemsController < ApplicationController
 
   private
 
-  def items_params
+  def item_params
     params.require(:item).permit(:name, :value, :comment, :patient_id)
   end
 

@@ -21,14 +21,17 @@
 
   <label>Select a day when students can view patient data:
     <input class="form-control" type="date" 
-           value="<%= viewable_time %>" name="patient[viewable_time]">
+           value="<%= @patient.viewable_time %>" name="patient[viewable_time]">
   </label><br>
+
+  <input class="btn btn-default" type="submit">
+</form><br>
 
   <% if @patient.persisted? %>
     <%= render "item" %>
   <% end %>
 
-  <input class="btn btn-default" type="submit">
+  
 
-</form><br>
+
 
