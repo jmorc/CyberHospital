@@ -15,7 +15,7 @@
       <td><%= link_to "Delete", 
               patient_url(patient), method: :delete %></td>
     <% else %>
-      <% if Time.now > patient.viewable_time %>
+      <% if patient.viewable? %>
         <td><%= link_to 'View Chart', patient %></td>
       <% else %>
         <td>Patient data viewable on: <%= patient.viewable_time %><td>
