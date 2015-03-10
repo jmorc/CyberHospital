@@ -8,7 +8,7 @@
 </tr>
 <tr>
   <td><%= @patient.name %></td>
-  <% if @patient.viewable? %>
+  <% if (@patient.viewable? || can?(:update, @patient)) %>
     <td><%= @patient.summary  %></td>
   <% else %>
     <td>Patient data not yet viewable</td>
@@ -18,12 +18,15 @@
 </tr>
 </table>
 
-<% if @patient.viewable? %>
+<% if (@patient.viewable? || can?(:update, @patient)) %>
   <%= render "patient_data" %>
 <% end %>
 
 <p>
+
+<hr>
 <% if can? :update, @patient %>
+  <br>
   <%= link_to 'Edit', edit_clinic_patient_url(@patient.clinic, @patient) %> |
 <% end %>
 <%= link_to 'Back', clinic_url(@patient.clinic) %>

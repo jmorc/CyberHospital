@@ -1,5 +1,6 @@
 <% form_method = @patient.persisted? ? "PATCH" : "POST" %>
 <% form_action = @patient.persisted? ? patient_url(@patient) : patients_url %>
+<% viewable_time = @patient.persisted? ? @patient.viewable_time : "" %>
 
 <form class="form-group" action="<%= form_action %>" method="POST">
   <input type="hidden" name="_method" value="<%= form_method %>">
@@ -19,7 +20,8 @@
   </label><br>
 
   <label>Select a day when students can view patient data:
-    <input class="form-control" type="date" name="patient[viewable_time]">
+    <input class="form-control" type="date" 
+           value="<%= viewable_time %>" name="patient[viewable_time]">
   </label><br>
 
   <% if @patient.persisted? %>

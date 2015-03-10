@@ -27,6 +27,7 @@
 <br>
 
 <% if can? :create, @clinic %>
+  <hr>
   <%= button_to 'Add a new clinic', new_clinic_url, 
       method: :get, class: "btn btn-default"   %>
 <% end %>

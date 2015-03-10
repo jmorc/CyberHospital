@@ -26,7 +26,8 @@
 </table>
 
 <% if can? :update, @patient %>
+  <hr>
   <%= link_to 'Add Patients to this Clinic', new_clinic_patient_url(@clinic) %>
-  <%= link_to 'Edit this clinic', edit_clinic_url(@clinic) %> |
+   | <%= link_to 'Edit this clinic', edit_clinic_url(@clinic) %> |
 <% end %>
 <%= link_to 'See all clinics', clinics_url %>

@@ -13,21 +13,21 @@
          value="<%= form_authenticity_token %>">
 
   <label>Data item name:
-    <input type="text" name="patient_data[name]" 
+    <input type="text" name="patient_datum[name]" 
            value="<%= @patient_data.name %>">
   </label><br>
 
   <label>Value:
-    <input type="text" name="patient_data[value]" 
+    <input type="text" name="patient_datum[value]" 
            value="<%= @patient_data.value %>">
   </label><br>
 
   <label>Comment:
-    <input type="text" name="patient_data[comment]" 
+    <input type="text" name="patient_datum[comment]" 
            value="<%= @patient_data.comment %>">
   </label><br>
 
-  <input type="hidden" name="patient_data[patient_id]" 
+  <input type="hidden" name="patient_datum[patient_id]" 
            value="<%= @patient.id %>">
 
   <input type="submit">

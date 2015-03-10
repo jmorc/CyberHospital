@@ -1,36 +1,37 @@
-class PatientDataController < ApplicationController
-  def create
-    @patient = Patient.find(params[:patient_data][:patient_id])
-    @patient_data = @patient.patient_datas.new(patient_data_params)
-    load_and_authorize_resource
+class PatientItemsController < ApplicationController
+  load_and_authorize_resource
 
-    if @patient_data.save!
+  def create
+    @patient = Patient.find(params[:patient_item][:patient_id])
+    @patient_item = @patient.patient_items.new(patient_items_params)
+
+    if @patient_item.save!
       flash[:notice] = 'New Patient Data Saved'
-      redirect_to @patient_data.patient
+      redirect_to @patient_item.patient
     else
-      flash[:notice] = @patient_data.errors.full_messages
-      redirect_to @patient_data.patient
+      flash[:notice] = @patient_item.errors.full_messages
+      redirect_to @patient_item.patient
     end
 
   end
 
   def update
-    @patient_data = PatientData.find(params[:id])
+    @patient_item = PatientItem.find(params[:id])
     
-    if @patient_data.update(patient_data_params)
+    if @patient_item.update(patient_item_params)
       flash[:notice] = 'Patient Data updated'
-      redirect_to @patient_data.patient
+      redirect_to @patient_item.patient
     else
-      flash[:notice] = @patient_data.errors.full_messages
-      redirect_to @patient_data.patient
+      flash[:notice] = @patient_item.errors.full_messages
+      redirect_to @patient_item.patient
     end
 
   end
 
   def destroy
-    @patient_data = PatientData.find(params[:id])
-    @patient_data.destroy
-    redirect_to @patient_data.patient
+    @patient_item = PatientItem.find(params[:id])
+    @patient_item.destroy
+    redirect_to @patient_item.patient
   end
 
   def show
@@ -38,18 +39,18 @@ class PatientDataController < ApplicationController
 
   def new
     @patient = Patient.find(params[:patient_id])
-    @patient_data = PatientData.new
+    @patient_item = PatientItem.new
   end
 
   def edit
     @patient = Patient.find(params[:patient_id])
-    @patient_data = PatientData.find(params[:id]) 
+    @patient_item = PatientItem.find(params[:id]) 
   end
 
   private
 
-  def patient_data_params
-    params.require(:patient_data).permit(:name, :value, :comment, :patient_id)
+  def patient_items_params
+    params.require(:patient_item).permit(:name, :value, :comment, :patient_id)
   end
 
 end
