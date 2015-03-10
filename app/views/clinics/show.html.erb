@@ -8,13 +8,18 @@
   
   <tr>
   <td><strong><%= patient.name %></strong></td>
-  	
-  	<td><%= link_to 'View Chart', patient %></td> 
   	<% if can? :update, @patient %>
+  	  <td><%= link_to 'View Chart', patient %></td>
   	  <td><%= link_to "Edit", 
   	          edit_clinic_patient_url(@clinic, patient) %></td>  
       <td><%= link_to "Delete", 
               patient_url(patient), method: :delete %></td>
+    <% else %>
+      <% if Time.now > patient.viewable_time %>
+        <td><%= link_to 'View Chart', patient %></td>
+      <% else %>
+        <td>Patient data viewable on: <%= patient.viewable_time %><td>
+      <% end %>
     <% end %>
     </tr>
     
