@@ -47,7 +47,4 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:name, :summary, :viewable_time)
     end
-
-
-    
 end
