@@ -2,6 +2,7 @@ class PatientDataController < ApplicationController
   def create
     @patient = Patient.find(params[:patient_data][:patient_id])
     @patient_data = @patient.patient_datas.new(patient_data_params)
+    load_and_authorize_resource
 
     if @patient_data.save!
       flash[:notice] = 'New Patient Data Saved'

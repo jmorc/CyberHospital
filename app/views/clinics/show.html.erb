@@ -10,14 +10,20 @@
   <td><strong><%= patient.name %></strong></td>
   	
   	<td><%= link_to 'View Chart', patient %></td> 
-  	<td><%= link_to "Edit", edit_clinic_patient_url(@clinic, patient) %></td>  
-    <td><%= link_to "Delete", patient_url(patient), method: :delete %></td>
+  	<% if can? :update, @patient %>
+  	  <td><%= link_to "Edit", 
+  	          edit_clinic_patient_url(@clinic, patient) %></td>  
+      <td><%= link_to "Delete", 
+              patient_url(patient), method: :delete %></td>
+    <% end %>
     </tr>
     
   
 <% end %>
 </table>
 
-<%= link_to 'Add Patients to this Clinic', new_clinic_patient_url(@clinic) %> |
-<%= link_to 'Edit this clinic', edit_clinic_url(@clinic) %> |
+<% if can? :update, @patient %>
+  <%= link_to 'Add Patients to this Clinic', new_clinic_patient_url(@clinic) %>
+  <%= link_to 'Edit this clinic', edit_clinic_url(@clinic) %> |
+<% end %>
 <%= link_to 'See all clinics', clinics_url %>

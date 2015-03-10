@@ -1,7 +1,7 @@
 class ClinicsController < ApplicationController
   before_action :set_clinic, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
+  load_and_authorize_resource
   respond_to :html
 
   def index
