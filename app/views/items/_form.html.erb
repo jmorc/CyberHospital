@@ -1,0 +1,35 @@
+<% form_method = @item.persisted? ? "PATCH" : "POST" %>
+
+<% if @item.persisted? %> 
+  <% form_action = item_url(@item) %>
+<% elsif %>
+  <% form_action = items_url %>
+<% end %>
+
+<form action="<%= form_action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  
+  <input type="hidden" name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <label>item item name:
+    <input type="text" name="item[name]" 
+           value="<%= @item.name %>">
+  </label><br>
+
+  <label>Value:
+    <input type="text" name="item[value]" 
+           value="<%= @item.value %>">
+  </label><br>
+
+  <label>Comment:
+    <input type="text" name="item[comment]" 
+           value="<%= @item.comment %>">
+  </label><br>
+
+  <input type="hidden" name="item[patient_id]" 
+           value="<%= @patient.id %>">
+
+  <input type="submit">
+
+</form>

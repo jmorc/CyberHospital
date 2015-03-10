@@ -14,7 +14,7 @@ bob = psychiatry.patients.create(name: "Bob Knuth",
 	summary: "Bob was admitted for confusion.  He appeared normal this morning",
 	viewable_time: "2015-03-04")
 
-bob.patient_datas.create([{ name: "Blood Pressure", value: "124/82" },
+bob.items.create([{ name: "Blood Pressure", value: "124/82" },
                           { name: "Temperature", value: "102.6", comment: "Uh-oh" },
 						  { name: "Heart Rate", value: "68 BPM", comment: "Wow!" }])
 
@@ -22,7 +22,7 @@ mary = psychiatry.patients.create(name: "Mary Geraldo",
 	summary: "Mary was admitted for manic behavior.  Her episode has not improved.",
 	viewable_time: "2015-03-06")
 
-mary.patient_datas.create([{ name: "Blood Pressure", value: "124/82" },
+mary.items.create([{ name: "Blood Pressure", value: "124/82" },
                            { name: "Temperature", value: "99.5" },
                            { name: "Heart Rate", value: "104 BPM", comment: "Wow!" }])
 

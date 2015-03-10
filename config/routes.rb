@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :patient_data, except: [:new, :edit, :index]
+  resources :items, except: [:new, :edit, :index]
 
   resources :patients, except: [:new, :edit, :index] do
-    resources :patient_data, only: [:new, :edit]
+    resources :items, only: [:new, :edit]
   end
 
   resources :clinics do 
