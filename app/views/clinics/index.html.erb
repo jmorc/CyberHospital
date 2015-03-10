@@ -12,11 +12,13 @@
       <tr>
         <td><%= clinic.name %></td>
         <td><%= link_to 'Show Patients', clinic %></td>
-        <td><%= button_to 'Edit', edit_clinic_url(clinic), 
+        <% if can? :update, @clinic %>
+          <td><%= button_to 'Edit', edit_clinic_url(clinic), 
                 method: :get, class: "btn btn-default" %></td>
-        <td><%= button_to 'Delete', clinic, 
+          <td><%= button_to 'Delete', clinic, 
                 method: :delete, data: { confirm: 'Are you sure?' },
                 class: "btn btn-default" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -24,5 +26,7 @@
 
 <br>
 
-<%= button_to 'Add a new clinic', new_clinic_url, 
-    method: :get, class: "btn btn-default"   %>
+<% if can? :create, @clinic %>
+  <%= button_to 'Add a new clinic', new_clinic_url, 
+      method: :get, class: "btn btn-default"   %>
+<% end %>
