@@ -2,12 +2,13 @@
 
 <table class="table">
 <tr>
-  <th>Name</th>
+  <th>Patient name</th>
   <th>Summary</th>
-  <th>Patient data viewable on</th>
+  <th>Students may view patient data on:</th>
 </tr>
 <tr>
   <td><%= @patient.name %></td>
+
   <% if (@patient.viewable? || can?(:update, @patient)) %>
     <td><%= @patient.summary  %></td>
   <% else %>
@@ -27,7 +28,8 @@
 <hr>
 <% if can? :update, @patient %>
   <br>
-  <%= link_to 'Edit', edit_clinic_patient_url(@patient.clinic, @patient) %> |
+  <%= link_to 'Edit this patient', 
+      edit_clinic_patient_url(@patient.clinic, @patient) %> |
 <% end %>
-<%= link_to 'Back', clinic_url(@patient.clinic) %>
+<%= link_to 'See all clinic patients', clinic_url(@patient.clinic) %>
 </p>
