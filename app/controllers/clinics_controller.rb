@@ -6,35 +6,40 @@ class ClinicsController < ApplicationController
 
   def index
     @clinics = Clinic.all
-    respond_with(@clinics)
   end
 
   def show
-    respond_with(@clinic)
   end
 
   def new
     @clinic = Clinic.new
-    respond_with(@clinic)
   end
 
   def edit
   end
 
   def create
-    @clinic = Clinic.new(clinic_params)
-    @clinic.save
-    respond_with(@clinic)
+    if @clinic.save!
+      flash[:notice] = 'New Clinic Created'
+      redirect_to @clinic
+    else
+      flash[:notice] = @clinic.errors.full_messages
+      redirect_to @clinic
+    end
   end
 
   def update
-    @clinic.update(clinic_params)
-    respond_with(@clinic)
+    if @clinic.update(clinic_params)
+      flash[:notice] = 'Clinic updated'
+    else
+      flash[:notice] = @clinic.errors.full_messages
+    end
+    redirect_to @clinic
   end
 
   def destroy
     @clinic.destroy
-    respond_with(@clinic)
+    redirect_to clinics_url
   end
 
   private
