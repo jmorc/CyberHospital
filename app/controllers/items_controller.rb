@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :new, :update, :destroy]
+  before_action :authenticate_user!
   load_and_authorize_resource
 
   def create
@@ -16,8 +18,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-    
     if @item.update(item_params)
       flash[:notice] = 'Patient Data updated'
       redirect_to @item.patient
@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to @item.patient
   end
@@ -44,13 +43,16 @@ class ItemsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:patient_id])
-    @item = Item.find(params[:id]) 
   end
 
   private
 
-  def item_params
-    params.require(:item).permit(:name, :value, :comment, :patient_id)
-  end
+    def set_item
+        @item = Item.find(params[:id])
+    end
+  
+    def item_params
+      params.require(:item).permit(:name, :value, :comment, :patient_id)
+    end
 
 end
