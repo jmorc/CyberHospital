@@ -5,7 +5,6 @@ class PatientsController < ApplicationController
   respond_to :html
 
   def show
-    respond_with(@patient)
   end
 
   def new
@@ -21,6 +20,7 @@ class PatientsController < ApplicationController
     @clinic = Clinic.find(params[:clinic_id])
     @patient = @clinic.patients.new(patient_params)
     if @patient.save
+      flash[:notices] = "Patient created"
       redirect_to @clinic
     else
       flash[:notices] = @patient.errors.full_messages
@@ -29,8 +29,12 @@ class PatientsController < ApplicationController
   end
 
   def update
-    @patient.update(patient_params)
-    respond_with(@patient)
+    if @patient.update(patient_params)
+      flash[:notices] = "Patient updated"
+    else
+      flash[:notices] = @patient.errors.full_messages
+    end
+    redirect_to @patient
   end
 
   def destroy
