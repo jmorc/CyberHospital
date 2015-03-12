@@ -9,14 +9,18 @@
   <tr>
     <td><strong><%= patient.name %></strong></td>
   	<% if can? :update, @patient %>
-  	  <td><%= link_to 'View Chart', patient %></td>
-  	  <td><%= link_to "Edit", 
-  	          edit_clinic_patient_url(@clinic, patient) %></td>  
-      <td><%= link_to "Delete", 
-              patient_url(patient), method: :delete %></td>
+  	  <td><%= button_to 'View Chart', patient,
+              class: "btn btn-default", method: :get  %></td>
+  	  <td><%= button_to "Edit", 
+  	          edit_clinic_patient_url(@clinic, patient),
+              class: "btn btn-default", method: :get   %></td>  
+      <td><%= button_to "Delete", 
+              patient_url(patient), method: :delete,
+              class: "btn btn-default"  %></td>
     <% else %>
       <% if patient.viewable? %>
-        <td><%= link_to 'View Chart', patient %></td>
+        <td><%= button_to 'View Chart', patient,
+                class: "btn btn-default", method: :get    %></td>
       <% else %>
         <td>Patient data viewable on: <%= patient.viewable_time %><td>
       <% end %>

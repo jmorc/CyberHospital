@@ -6,7 +6,7 @@
   <% form_action = items_url %>
 <% end %>
 
-<form action="<%= form_action %>" method="POST">
+<form action="<%= form_action %>" method="POST" clas="form-group">
   <input type="hidden" name="_method" value="<%= form_method %>">
   
   <input type="hidden" name="authenticity_token"
@@ -14,22 +14,25 @@
 
   <label>Data item name:
     <input type="text" name="item[name]" 
-           value="<%= @item.name %>">
+           value="<%= @item.name %>" class="form-control">
   </label><br>
 
   <label>Value:
     <input type="text" name="item[value]" 
-           value="<%= @item.value %>">
+           value="<%= @item.value %>" class="form-control">
   </label><br>
 
   <label>Comment:
     <input type="text" name="item[comment]" 
-           value="<%= @item.comment %>">
+           value="<%= @item.comment %>" class="form-control">
   </label><br>
 
   <input type="hidden" name="item[patient_id]" 
-           value="<%= @patient.id %>">
+         value="<%= @patient.id %>" class="form-control">
 
-  <input type="submit">
+  <input type="submit" class="btn btn-default">
 
 </form>
+
+<%= link_to 'Show this patient', @patient %> |
+<%= link_to 'Back to patient list', @patient.clinic %>
